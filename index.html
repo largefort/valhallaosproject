@@ -137,9 +137,20 @@
   </footer>
 
   <script>
-    // Countdown timer - default 2 hours from now
-    const targetTime = new Date(new Date().getTime() + 2 * 60 * 60 * 1000);
+    const TIMER_DURATION_HOURS = 2; // Change to 1 for 1 hour
+    const STORAGE_KEY = "valhallaCountdownEnd";
 
+    function getOrCreateEndTime() {
+      let endTime = localStorage.getItem(STORAGE_KEY);
+      if (!endTime) {
+        const newEndTime = new Date().getTime() + TIMER_DURATION_HOURS * 60 * 60 * 1000;
+        localStorage.setItem(STORAGE_KEY, newEndTime);
+        return newEndTime;
+      }
+      return parseInt(endTime);
+    }
+
+    const targetTime = getOrCreateEndTime();
     const countdown = document.getElementById("countdown");
     const countdownSection = document.getElementById("countdown-section");
     const downloadSection = document.getElementById("download-section");
@@ -161,6 +172,7 @@
       countdown.textContent = `${hours}h ${minutes}m ${seconds}s`;
     }
 
+    updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
 
