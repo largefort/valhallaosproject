@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valhalla OS Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+      background: linear-gradient(to bottom, #111, #0a0a0a);
+    }
+
+    h1 {
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 3.5rem;
+      color: #00aaff;
+      margin: 0;
+    }
+
+    p.subtitle {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #111;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .center {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #00ffcc;
+    }
+
+    .download-button {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #00aaff;
+      color: #0a0a0a;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    .download-button:hover {
+      background-color: #0077aa;
+    }
+
+    section.info {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: #111;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Valhalla OS Project</h1>
+    <p class="subtitle">Ubuntu-based. Warrior-optimized. Coming soon...</p>
+  </header>
+
+  <nav>
+    <a href="valhalla-os.html">Home</a>
+    <a href="https://github.com/your-github-user/your-repo-name/releases" target="_blank">GitHub Releases</a>
+  </nav>
+
+  <section class="center" id="countdown-section">
+    <h2>Live ISO Launches In:</h2>
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <section class="center" id="download-section" style="display: none;">
+    <h2>Download Valhalla OS</h2>
+    <p>Your system awaits its final form. Download the Live ISO now.</p>
+    <a class="download-button" href="https://github.com/your-github-user/your-repo-name/releases/latest" target="_blank">
+      Download ISO from GitHub
+    </a>
+  </section>
+
+  <section class="info">
+    <h3>Why Valhalla OS?</h3>
+    <p>
+      Valhalla OS is an Ubuntu-based Linux distribution crafted for developers, creators, and warriors of the digital age.
+      With a Norse-inspired interface and optimized performance, it brings together freedom and power in a beautifully dark environment.
+    </p>
+
+    <h3>Installation Guide</h3>
+    <p>
+      1. Download the ISO once released.<br>
+      2. Flash it using Rufus or BalenaEtcher.<br>
+      3. Boot from the USB, launch the live session, and install.<br>
+      4. Welcome to Valhalla.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Valhalla OS Project | Forged in Iceland by Jafet Egill Jafetsson
+  </footer>
+
+  <script>
+    // Countdown timer - default 2 hours from now
+    const targetTime = new Date(new Date().getTime() + 2 * 60 * 60 * 1000);
+
+    const countdown = document.getElementById("countdown");
+    const countdownSection = document.getElementById("countdown-section");
+    const downloadSection = document.getElementById("download-section");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetTime - now;
+
+      if (distance <= 0) {
+        countdownSection.style.display = "none";
+        downloadSection.style.display = "block";
+        return;
+      }
+
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdown.textContent = `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
