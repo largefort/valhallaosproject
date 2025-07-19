@@ -52,12 +52,6 @@
       padding: 3rem 1rem;
     }
 
-    .countdown {
-      font-size: 2rem;
-      margin-top: 1rem;
-      color: #00ffcc;
-    }
-
     .download-button {
       display: inline-block;
       margin-top: 2rem;
@@ -96,38 +90,33 @@
 
   <header>
     <h1>Valhalla OS:Valkyrie Project</h1>
-    <p class="subtitle">Debian-based. Warrior-optimized. Coming soon to your machine.</p>
+    <p class="subtitle">Debian-based. Warrior-optimized. Now available.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="https://github.com/largefort/valhallaosproject/releases/tag/valkyrie" target="_blank">GitHub Releases</a>
+    <a href="https://github.com/largefort/valhallaosproject/releases" target="_blank">GitHub Releases</a>
     <a href="https://valhallaos.site/">valhallaos.site</a>
   </nav>
 
-  <section class="center" id="countdown-section">
-    <h2>Live ISO Launches In:</h2>
-    <div class="countdown" id="countdown"></div>
-  </section>
-
-  <section class="center" id="download-section" style="display: none;">
-    <h2>Download Valhalla OS Valkyrie</h2>
+  <section class="center" id="download-section">
+    <h2>Download Valhalla OS Core</h2>
     <p>Your system awaits its final form. Download the Live ISO now.</p>
-    <a class="download-button" href="https://github.com/largefort/valhallaosproject/releases/download/bifrost/valhallaos.iso" target="_blank">
-      Download ISO from GitHub
+    <a class="download-button" href="https://github.com/largefort/valhallaosproject/releases/download/core-1.0.1/valhallaos.iso" target="_blank">
+      Download valhallaos.iso
     </a>
   </section>
 
   <section class="info">
     <h3>About Valhalla OS</h3>
     <p>
-      Valhalla OS is an Debian-based Linux distribution forged for developers, creators, and warriors of the digital world.
+      Valhalla OS is a Debian-based Linux distribution forged for developers, creators, and warriors of the digital world.
       Featuring a Norse-themed interface, optimized tools, and secure performance, it is built for those who seek freedom and control.
     </p>
 
     <h3>Installation Guide</h3>
     <p>
-      1. Download the ISO once released.<br>
+      1. Download the ISO.<br>
       2. Flash it using Rufus or BalenaEtcher.<br>
       3. Boot into the USB and run the live installer.<br>
       4. Enter Valhalla.
@@ -143,46 +132,6 @@
   <footer>
     &copy; 2025 Valhalla OS Project | Forged in Iceland by Jafet Egill Jafetsson
   </footer>
-
-  <script>
-    const TIMER_DURATION_HOURS = 2; // Change to 1 for 1 hour
-    const STORAGE_KEY = "valhallaCountdownEnd";
-
-    function getOrCreateEndTime() {
-      let endTime = localStorage.getItem(STORAGE_KEY);
-      if (!endTime) {
-        const newEndTime = new Date().getTime() + TIMER_DURATION_HOURS * 60 * 60 * 1000;
-        localStorage.setItem(STORAGE_KEY, newEndTime);
-        return newEndTime;
-      }
-      return parseInt(endTime);
-    }
-
-    const targetTime = getOrCreateEndTime();
-    const countdown = document.getElementById("countdown");
-    const countdownSection = document.getElementById("countdown-section");
-    const downloadSection = document.getElementById("download-section");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetTime - now;
-
-      if (distance <= 0) {
-        countdownSection.style.display = "none";
-        downloadSection.style.display = "block";
-        return;
-      }
-
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      countdown.textContent = `${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
 
 </body>
 </html>
